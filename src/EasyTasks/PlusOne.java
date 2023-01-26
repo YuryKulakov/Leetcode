@@ -1,0 +1,27 @@
+package EasyTasks;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+
+public class PlusOne {
+    public static void main(String[] args) {
+        int[] u = {0};
+        plusOne(u);
+        System.out.println(Arrays.toString(u));
+    }
+
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i]<9){
+                digits[i]++;
+                return digits;
+            }
+            digits[i]=0;
+        }
+        digits = new int[digits.length+1];
+        digits[0]=1;
+        return digits;
+    }
+}
