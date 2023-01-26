@@ -1,5 +1,9 @@
 package EasyTasks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MergeTwoSortedLists {
 
     public static void main(String[] args) {
@@ -19,42 +23,41 @@ public class MergeTwoSortedLists {
         head1.next=head2;
         head3.next=head4;
         head4.next=head5;
-
-        System.out.println(mergeTwoLists(head,head3));
+        List list = new ArrayList();
+        list.add(mergeTwoLists(head,head3));
+        System.out.println(list);
     }
 
     public static ListNode1 mergeTwoLists(ListNode1 list1, ListNode1 list2) {
-        ListNode1 temp = new ListNode1();
-        if(list1.val>list2.val){
-            temp.val=list2.val;
-            list2=list2.next;
-        }else{
-            temp.val=list1.val;
-            list1=list1.next;
-        }
-        ListNode1 lastNode = temp;
+        if(list1 == null){ return list2;}
+        if(list2 == null){ return list1;}
 
-        while (list1!=null||list2!=null){
-            ListNode1 nowNode = new ListNode1();
+        ListNode1 head = new ListNode1(-1);
+        ListNode1 listNode1 = head;
 
-            if(list1.val>list2.val){
-                nowNode.val=list2.val;
-                list2=list2.next;
-            }else{
-                nowNode.val=list1.val;
+        while(list1!=null&&list2!=null){
+            if(list1.val<=list2.val){
+                listNode1.next=new ListNode1(list1.val);
                 list1=list1.next;
-            }
-
-            lastNode.next = nowNode;
-            lastNode = nowNode;
-
-            if(list1!=null){
-                lastNode.next=list1;
             }else{
-                lastNode.next=list2;
+                listNode1 = new ListNode1(list2.val);
+                list2=list2.next;
             }
+            listNode1 = listNode1.next;
         }
-        return temp;
+
+        while (list1!=null){
+            listNode1=new ListNode1(list1.val);
+            list1=list1.next;
+            listNode1=listNode1.next;
+        }
+
+        while (list2!=null){
+            listNode1=new ListNode1(list2.val);
+            list2=list2.next;
+            listNode1=listNode1.next;
+        }
+        return head.next;
     }
 }
 
@@ -72,5 +75,12 @@ class ListNode1 {
     ListNode1(int val, ListNode1 next) {
         this.val = val;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode1{" +
+                "val=" + val +
+                '}';
     }
 }
