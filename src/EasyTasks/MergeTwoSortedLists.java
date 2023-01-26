@@ -44,13 +44,13 @@ public class MergeTwoSortedLists {
         }
 
         while (list1!=null){
-            listNode1=new ListNode1(list1.val);
+            listNode1.next=new ListNode1(list1.val);
             list1=list1.next;
             listNode1=listNode1.next;
         }
 
         while (list2!=null){
-            listNode1=new ListNode1(list2.val);
+            listNode1.next=new ListNode1(list2.val);
             list2=list2.next;
             listNode1=listNode1.next;
         }
