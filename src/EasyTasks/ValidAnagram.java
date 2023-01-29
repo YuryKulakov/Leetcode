@@ -16,18 +16,15 @@ public class ValidAnagram {
         char[] array1 = s.toCharArray();
         char[] array2 = t.toCharArray();
 
-        for (int i = 0; i < array1.length; i++) {
+        for (char c : array1) {
             for (int j = 0; j < array2.length; j++) {
-                if (array1[i] == array2[j]) {
+                if (c == array2[j]) {
                     coincidence++;
                     array2[j] = '*';
                     break;
                 }
             }
         }
-        if (coincidence == s.length())
-            return true;
-
-        return false;
+        return coincidence == s.length();
     }
 }
