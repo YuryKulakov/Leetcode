@@ -23,9 +23,6 @@ public class FirstBadVersion {
     }
 
     public static boolean isBadVersion(int bad) {
-        if (bad >= BAD) {
-            return true;
-        }
-        return false;
+        return bad >= BAD;
     }
 }
